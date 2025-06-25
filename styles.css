@@ -142,3 +142,7 @@ body {
   gap: 14px;
   margin-top: 20px;
 }
+.tasks-list {
+  overflow-y: scroll;
+  max-height: 300px;
+}
