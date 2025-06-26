@@ -17,7 +17,11 @@
       <div class="header">
         <h1>Your To-Do</h1>
         <div class="header-buttons">
-          <button>sort</button>
+          <select id="pet-select">
+            <option value="">sort</option>
+            <option value="alphabetical">Alpha (A - Z)</option>
+            <option value="recent">Recent</option>
+          </select>
           <button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +53,7 @@
           class="task-title"
           required
           type="text"
-          minlength="10"
+          minlength="4"
           maxlength="50"
           placeholder="Add new task"
         />
@@ -75,7 +79,9 @@
       <!-- wrapper for all the tasks -->
       <div class="tasks-list"></div>
       <div class="footer">
-        <p class="todo-update-text">your remaning todos: 3</p>
+        <p class="todo-update-text">
+          your remaning todos: <span class="todo-number">0</span>
+        </p>
         <p class="quote-text">
           "you miss 100% of the shorts you don't take" -Wayne gretzky
         </p>

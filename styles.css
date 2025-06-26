@@ -150,3 +150,28 @@ body {
 .completed {
   text-decoration: line-through;
 }
+.task-title {
+  /* color: red; */
+}
+.todo-number {
+  font-weight: 600;
+  color: red;
+}
+select {
+  background: none;
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #718096;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+select:hover {
+  background-color: #d4d8da;
+  color: #4a5568;
+}
+option {
+  border: none;
+}
