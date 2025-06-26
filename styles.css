@@ -4,14 +4,114 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   display: flex;
   justify-content: center;
-  background-color: #f8f9fa;
   align-items: center;
   height: 100vh;
   padding: 20px;
 }
+
+.dark {
+  background-color: black;
+  color: white;
+}
+
+.light {
+  background-color: #f8f9fa;
+  color: black;
+}
+
+.dark .todo-container {
+  background-color: #2d3748;
+  color: white;
+}
+
+.dark .input-container input {
+  background-color: #4a5568;
+  color: white;
+  border-color: #718096;
+}
+
+.dark .input-container input::placeholder {
+  color: #a0aec0;
+}
+
+.dark .task-container {
+  background-color: #4a5568;
+  border-color: #718096;
+}
+
+.dark .edit-input {
+  background-color: #4a5568;
+  color: white;
+  border-color: #718096;
+}
+
+.dark .header h1 {
+  color: white;
+}
+
+.dark .header-buttons button {
+  color: #e2e8f0;
+}
+
+.dark .header-buttons button:hover {
+  background-color: #4a5568;
+  color: white;
+}
+
+.dark select {
+  color: #e2e8f0;
+  background-color: #4a5568;
+}
+
+.dark select:hover {
+  background-color: #2d3748;
+  color: white;
+}
+
+.dark .task-title {
+  color: white;
+}
+
+.dark .completed {
+  color: #9ae6b4;
+}
+
+.dark .delete-btn,
+.dark .save-btn {
+  color: #e2e8f0;
+}
+
+.dark .delete-btn:hover,
+.dark .save-btn:hover {
+  background-color: #4a5568;
+  color: white;
+}
+
+.dark .todo-update-text {
+  color: #e2e8f0;
+}
+
+.dark .quote-text {
+  color: #9ae6b4;
+}
+
+.dark .todo-number {
+  color: #f56565;
+}
+
+.dark .add-button {
+  background-color: #667eea;
+  color: white;
+}
+
+.dark .add-button:hover {
+  background-color: #5a67d8;
+}
+
 .todo-container {
   background-color: white;
   border-radius: 16px;
@@ -20,13 +120,14 @@ body {
   max-width: 480px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
+
 .header {
   display: flex;
-  /* flex-direction: row; */
   align-items: center;
   justify-content: space-between;
   margin-bottom: 32px;
 }
+
 .header-buttons {
   display: flex;
   gap: 12px;
@@ -48,23 +149,19 @@ body {
   background-color: #d4d8da;
   color: #4a5568;
 }
+
 .header h1 {
   font-size: 28px;
   font-weight: 600;
   color: #2d3748;
 }
-.input-container {
-  display: flex;
-  /* flex-direction: row; */
-  align-items: center;
-  justify-content: space-between;
-  height: 48px;
-}
+
 .input-container {
   display: flex;
   gap: 12px;
   margin-bottom: 32px;
 }
+
 .add-button {
   background-color: #4a5568;
   color: white;
@@ -80,6 +177,7 @@ body {
   justify-content: center;
   transition: background-color 0.2s ease;
 }
+
 .input-container input {
   flex: 1;
   padding: 12px 12px;
@@ -103,6 +201,7 @@ body {
   flex: 1;
   gap: 16px;
 }
+
 .task-container {
   display: flex;
   align-items: center;
@@ -114,6 +213,7 @@ body {
   margin-bottom: 12px;
   cursor: pointer;
 }
+
 .delete-btn {
   background: none;
   border: none;
@@ -125,38 +225,43 @@ body {
   font-weight: 500;
   transition: all 0.2s ease;
 }
+
 .delete-btn:hover {
   background-color: #d4d8da;
   color: #4a5568;
 }
+
 .todo-update-text {
   color: rgb(109, 109, 109);
   font-weight: 600;
 }
+
 .quote-text {
   color: rgb(109, 109, 109);
   font-size: 14px;
 }
+
 .footer {
   display: flex;
   flex-direction: column;
   gap: 14px;
   margin-top: 20px;
 }
+
 .tasks-list {
   overflow-y: auto;
   max-height: 300px;
 }
+
 .completed {
   text-decoration: line-through;
 }
-.task-title {
-  /* color: red; */
-}
+
 .todo-number {
   font-weight: 600;
   color: red;
 }
+
 select {
   background: none;
   border: none;
@@ -168,13 +273,16 @@ select {
   font-weight: 500;
   transition: all 0.2s ease;
 }
+
 select:hover {
   background-color: #d4d8da;
   color: #4a5568;
 }
+
 option {
   border: none;
 }
+
 .save-btn {
   background: none;
   border: none;
@@ -186,10 +294,12 @@ option {
   font-weight: 500;
   transition: all 0.2s ease;
 }
+
 .save-btn:hover {
   background-color: #d4d8da;
   color: #4a5568;
 }
+
 .edit-input {
   width: 100%;
   border-radius: 8px;

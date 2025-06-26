@@ -1,11 +1,13 @@
 let userTasks = [];
 let currentEditingTaskId = null;
 let numberOftasksLeft = userTasks.filter((task) => !task.isCompleted);
+let isDark = false;
 
 const form = document.querySelector(".input-container");
 const titleInput = document.querySelector(".task-title");
 const container = document.querySelector(".tasks-list");
 const remainingTodos = document.querySelector(".todo-number");
+const themeBtn = document.querySelector(".light-dark");
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -114,3 +116,21 @@ function updateRemainingTodos() {
   remainingTodos.textContent = taskLeftCount;
 }
 function renderFooter() {}
+
+themeBtn.addEventListener("click", function () {
+  isDark = !isDark;
+
+  if (isDark) {
+    document.body.className = "dark";
+  } else {
+    document.body.className = "light";
+  }
+
+  updateThemeIcon();
+});
+
+function updateThemeIcon() {
+  const iconContainer = themeBtn.querySelector("i");
+  iconContainer.setAttribute("data-lucide", isDark ? "sun" : "moon");
+  lucide.createIcons();
+}
