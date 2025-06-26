@@ -175,3 +175,26 @@ select:hover {
 option {
   border: none;
 }
+.save-btn {
+  background: none;
+  border: none;
+  padding: 4px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #718096;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+.save-btn:hover {
+  background-color: #d4d8da;
+  color: #4a5568;
+}
+.edit-input {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid gray;
+  padding-left: 10px;
+  padding-bottom: 8px;
+  padding-top: 8px;
+}

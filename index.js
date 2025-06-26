@@ -39,14 +39,14 @@ function renderTasks() {
   ${
     task.id === currentEditingTaskId
       ? `<input data-task-id="${task.id}" class="edit-input" value="${task.title}">
-   <button data-task-id="${task.id}" class="save-btn">✓</button>`
+   <button data-task-id="${task.id}" class="save-btn">  <i data-lucide="check"></i></button>`
       : `<p data-task-id="${task.id}" class="task-title ${
           task.isCompleted ? "completed" : ""
         }">${task.title}</p>`
   }
         </div>
           <button data-task-id="${task.id}" class="delete-btn">
-           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                  <i data-lucide="x"></i>
           </button>
       </div>
     `;
@@ -54,6 +54,7 @@ function renderTasks() {
     container.innerHTML += taskHTML;
   });
   updateRemainingTodos();
+  lucide.createIcons();
 }
 
 // event delegation
@@ -70,10 +71,13 @@ container.addEventListener("click", function (event) {
     const taskId = event.target.dataset.taskId;
     currentEditingTaskId = taskId;
     renderTasks();
-  } else if (event.target.classList.contains("save-btn")) {
-    const taskId = event.target.dataset.taskId;
-    const inputElement =
-      event.target.parentElement.querySelector(".edit-input");
+  } else if (
+    event.target.classList.contains("save-btn") ||
+    event.target.closest(".save-btn")
+  ) {
+    const button = event.target.closest(".save-btn");
+    const taskId = button.dataset.taskId;
+    const inputElement = button.parentElement.querySelector(".edit-input");
     const newTitle = inputElement.value;
     const foundTask = userTasks.find((task) => task.id === taskId);
     foundTask.title = newTitle;
