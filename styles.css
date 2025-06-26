@@ -112,6 +112,7 @@ body {
   outline: none;
   padding: 6px 12px;
   margin-bottom: 12px;
+  cursor: pointer;
 }
 .delete-btn {
   background: none;
@@ -143,6 +144,9 @@ body {
   margin-top: 20px;
 }
 .tasks-list {
-  overflow-y: scroll;
+  overflow-y: auto;
   max-height: 300px;
+}
+.completed {
+  text-decoration: line-through;
 }
