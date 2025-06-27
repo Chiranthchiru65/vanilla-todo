@@ -29,8 +29,9 @@
       </header>
       <section>
         <form class="input-container">
-          <!-- <label for="task-input">Add new task</label> -->
+          <label for="task-input" class="sr-only">Add new task</label>
           <input
+            id="task-input"
             class="task-title"
             required
             type="text"
@@ -38,7 +39,7 @@
             maxlength="50"
             placeholder="Add new task"
           />
-          <button class="add-button">
+          <button class="add-button" aria-label="Add task">
             <i data-lucide="plus"></i>
           </button>
         </form>

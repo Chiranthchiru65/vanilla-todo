@@ -46,19 +46,21 @@ function renderTasks() {
        <div class="checkbox-input-child">
          <input data-task-id="${
            task.id
-         }" class="isComplete-checkbox" tabindex="0" type="checkbox" ${
-      task.isCompleted ? "checked" : ""
-    }>
+         }" class="isComplete-checkbox" tabindex="0" type="checkbox" aria-label="Mark task as ${
+      task.isCompleted ? "incomplete" : "complete"
+    }" ${task.isCompleted ? "checked" : ""}>
  ${
    task.id === currentEditingTaskId
-     ? `<input data-task-id="${task.id}" class="edit-input" value="${task.title}">
-  <button data-task-id="${task.id}" class="save-btn">  <i data-lucide="check"></i></button>`
+     ? `<input data-task-id="${task.id}" class="edit-input" value="${task.title}" aria-label="Edit task">
+  <button data-task-id="${task.id}" class="save-btn" aria-label="Save task changes">  <i data-lucide="check"></i></button>`
      : `<p data-task-id="${task.id}" class="task-title ${
          task.isCompleted ? "completed" : ""
        }">${task.title}</p>`
  }
        </div>
-         <button data-task-id="${task.id}" class="delete-btn">
+         <button data-task-id="${
+           task.id
+         }" class="delete-btn" aria-label="Delete task: ${task.title}">
                  <i data-lucide="x"></i>
          </button>
      </li>

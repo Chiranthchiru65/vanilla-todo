@@ -11,7 +11,6 @@ body {
   align-items: center;
   height: 100vh;
   padding: 20px;
-  /* Add default light theme styles */
   background-color: #f8f9fa;
   color: black;
 }
@@ -38,7 +37,7 @@ body {
 }
 
 .dark .input-container input::placeholder {
-  color: #a0aec0;
+  color: #cbd5e0;
 }
 
 .dark .task-container {
@@ -142,15 +141,15 @@ body {
   padding: 8px;
   border-radius: 8px;
   cursor: pointer;
-  color: #718096;
+  color: #4a5568;
   font-size: 14px;
   font-weight: 500;
   transition: all 0.2s ease;
 }
 
 .header-buttons button:hover {
-  background-color: #d4d8da;
-  color: #4a5568;
+  background-color: #e2e8f0;
+  color: #2d3748;
 }
 
 .header h1 {
@@ -196,7 +195,7 @@ body {
 }
 
 .input-container input::placeholder {
-  color: #a0aec0;
+  color: #718096;
 }
 
 .checkbox-input-child {
@@ -223,24 +222,24 @@ body {
   padding: 4px;
   border-radius: 8px;
   cursor: pointer;
-  color: #718096;
+  color: #4a5568;
   font-size: 14px;
   font-weight: 500;
   transition: all 0.2s ease;
 }
 
 .delete-btn:hover {
-  background-color: #d4d8da;
-  color: #4a5568;
+  background-color: #e2e8f0;
+  color: #2d3748;
 }
 
 .todo-update-text {
-  color: rgb(109, 109, 109);
+  color: #4a5568;
   font-weight: 600;
 }
 
 .quote-text {
-  color: rgb(109, 109, 109);
+  color: #4a5568;
   font-size: 14px;
 }
 
@@ -262,7 +261,7 @@ body {
 
 .todo-number {
   font-weight: 600;
-  color: red;
+  color: #e53e3e;
 }
 
 select {
@@ -271,15 +270,15 @@ select {
   padding: 8px;
   border-radius: 8px;
   cursor: pointer;
-  color: #718096;
+  color: #4a5568;
   font-size: 14px;
   font-weight: 500;
   transition: all 0.2s ease;
 }
 
 select:hover {
-  background-color: #d4d8da;
-  color: #4a5568;
+  background-color: #e2e8f0;
+  color: #2d3748;
 }
 
 option {
@@ -292,15 +291,15 @@ option {
   padding: 4px;
   border-radius: 8px;
   cursor: pointer;
-  color: #718096;
+  color: #4a5568;
   font-size: 14px;
   font-weight: 500;
   transition: all 0.2s ease;
 }
 
 .save-btn:hover {
-  background-color: #d4d8da;
-  color: #4a5568;
+  background-color: #e2e8f0;
+  color: #2d3748;
 }
 
 .edit-input {
@@ -310,4 +309,29 @@ option {
   padding-left: 10px;
   padding-bottom: 8px;
   padding-top: 8px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+.dark button:focus-visible,
+.dark input:focus-visible,
+.dark select:focus-visible {
+  outline-color: #9ae6b4;
 }
