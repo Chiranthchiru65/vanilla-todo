@@ -1,6 +1,5 @@
 let userTasks = [];
 let currentEditingTaskId = null;
-
 let isDark = false;
 
 const form = document.querySelector(".input-container");
@@ -33,32 +32,34 @@ function renderTasks() {
 
   userTasks.forEach((task) => {
     const taskHTML = `
-      <div id=${task.id} class="task-container">
-        <div class="checkbox-input-child">
-          <input data-task-id="${
-            task.id
-          }" class="isComplete-checkbox"  type="checkbox" ${
+     <div id=${task.id} class="task-container">
+       <div class="checkbox-input-child">
+         <input data-task-id="${
+           task.id
+         }" class="isComplete-checkbox"  type="checkbox" ${
       task.isCompleted ? "checked" : ""
     }>
-  ${
-    task.id === currentEditingTaskId
-      ? `<input data-task-id="${task.id}" class="edit-input" value="${task.title}">
-   <button data-task-id="${task.id}" class="save-btn">  <i data-lucide="check"></i></button>`
-      : `<p data-task-id="${task.id}" class="task-title ${
-          task.isCompleted ? "completed" : ""
-        }">${task.title}</p>`
-  }
-        </div>
-          <button data-task-id="${task.id}" class="delete-btn">
-                  <i data-lucide="x"></i>
-          </button>
-      </div>
-    `;
+ ${
+   task.id === currentEditingTaskId
+     ? `<input data-task-id="${task.id}" class="edit-input" value="${task.title}">
+  <button data-task-id="${task.id}" class="save-btn">  <i data-lucide="check"></i></button>`
+     : `<p data-task-id="${task.id}" class="task-title ${
+         task.isCompleted ? "completed" : ""
+       }">${task.title}</p>`
+ }
+       </div>
+         <button data-task-id="${task.id}" class="delete-btn">
+                 <i data-lucide="x"></i>
+         </button>
+     </div>
+   `;
 
     container.innerHTML += taskHTML;
   });
   updateRemainingTodos();
-  lucide.createIcons();
+  if (typeof lucide !== "undefined") {
+    lucide.createIcons();
+  }
 }
 
 // event delegation
@@ -77,7 +78,6 @@ container.addEventListener("click", function (event) {
     const taskId = event.target.dataset.taskId;
     currentEditingTaskId = taskId;
     renderTasks();
-    saveTasksToStorage();
   } else if (
     event.target.classList.contains("save-btn") ||
     event.target.closest(".save-btn")
@@ -123,7 +123,6 @@ function updateRemainingTodos() {
   const taskLeftCount = userTasks.filter((task) => !task.isCompleted).length;
   remainingTodos.textContent = taskLeftCount;
 }
-function renderFooter() {}
 
 themeBtn.addEventListener("click", function () {
   isDark = !isDark;
@@ -141,12 +140,12 @@ themeBtn.addEventListener("click", function () {
 function updateThemeIcon() {
   const iconContainer = themeBtn.querySelector("i");
   iconContainer.setAttribute("data-lucide", isDark ? "sun" : "moon");
-  lucide.createIcons();
+  if (typeof lucide !== "undefined") {
+    lucide.createIcons();
+  }
 }
 
 // select sort options
-// store in sortOption variable
-// make two variables one for alpha and the other for time
 sortSelect.addEventListener("change", function (event) {
   const sortOption = event.target.value;
 
@@ -181,7 +180,9 @@ function loadTasksFromStorage() {
   }
   updateThemeIcon();
 }
+
 loadTasksFromStorage();
+
 // save task after every change
 function saveTasksToStorage() {
   localStorage.setItem("todoTasks", JSON.stringify(userTasks));
