@@ -1,6 +1,6 @@
 let userTasks = [];
 let currentEditingTaskId = null;
-let numberOftasksLeft = userTasks.filter((task) => !task.isCompleted);
+
 let isDark = false;
 
 const form = document.querySelector(".input-container");
@@ -8,6 +8,7 @@ const titleInput = document.querySelector(".task-title");
 const container = document.querySelector(".tasks-list");
 const remainingTodos = document.querySelector(".todo-number");
 const themeBtn = document.querySelector(".light-dark");
+const sortSelect = document.querySelector("#sort-options");
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -134,3 +135,20 @@ function updateThemeIcon() {
   iconContainer.setAttribute("data-lucide", isDark ? "sun" : "moon");
   lucide.createIcons();
 }
+
+// select sort options
+// store in sortOption variable
+// make two variables one for alpha and the other for time
+sortSelect.addEventListener("change", function (event) {
+  const sortOption = event.target.value;
+
+  if (sortOption === "alphabetical") {
+    userTasks.sort((a, b) => a.title.localeCompare(b.title));
+  } else if (sortOption === "recent") {
+    userTasks.sort((a, b) => b.timeCreated - a.timeCreated);
+  } else if (sortOption === "") {
+    userTasks.sort((a, b) => a.timeCreated - b.timeCreated);
+  }
+
+  renderTasks();
+});
