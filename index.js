@@ -27,6 +27,16 @@ form.addEventListener("submit", function (event) {
   titleInput.value = "";
 });
 
+container.addEventListener("keydown", function (event) {
+  if (
+    event.target.classList.contains("isComplete-checkbox") &&
+    event.key === "Enter"
+  ) {
+    event.preventDefault();
+    event.target.click(); // Trigger the click event
+  }
+});
+
 function renderTasks() {
   container.innerHTML = "";
 
@@ -36,7 +46,7 @@ function renderTasks() {
        <div class="checkbox-input-child">
          <input data-task-id="${
            task.id
-         }" class="isComplete-checkbox"  type="checkbox" ${
+         }" class="isComplete-checkbox" tabindex="0" type="checkbox" ${
       task.isCompleted ? "checked" : ""
     }>
  ${
