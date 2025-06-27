@@ -11,6 +11,9 @@ body {
   align-items: center;
   height: 100vh;
   padding: 20px;
+  /* Add default light theme styles */
+  background-color: #f8f9fa;
+  color: black;
 }
 
 .dark {

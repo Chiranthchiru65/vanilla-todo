@@ -24,6 +24,7 @@ form.addEventListener("submit", function (event) {
 
   console.log(userTasks);
   renderTasks();
+  saveTasksToStorage();
   titleInput.value = "";
 });
 
@@ -69,11 +70,14 @@ container.addEventListener("click", function (event) {
     const foundTask = userTasks.find((task) => task.id === taskId);
     foundTask.isCompleted = !foundTask.isCompleted;
     console.log("found task objct", foundTask);
+    userTasks.sort((a, b) => a.isCompleted - b.isCompleted);
     renderTasks();
+    saveTasksToStorage();
   } else if (event.target.classList.contains("task-title")) {
     const taskId = event.target.dataset.taskId;
     currentEditingTaskId = taskId;
     renderTasks();
+    saveTasksToStorage();
   } else if (
     event.target.classList.contains("save-btn") ||
     event.target.closest(".save-btn")
@@ -87,6 +91,7 @@ container.addEventListener("click", function (event) {
 
     currentEditingTaskId = null;
     renderTasks();
+    saveTasksToStorage();
   } else if (
     event.target.classList.contains("delete-btn") ||
     event.target.closest(".delete-btn")
@@ -96,6 +101,7 @@ container.addEventListener("click", function (event) {
     console.log("delete id", taskId);
     userTasks = userTasks.filter((task) => task.id !== taskId);
     renderTasks();
+    saveTasksToStorage();
   }
 });
 
@@ -109,6 +115,7 @@ container.addEventListener("keypress", function (event) {
 
     currentEditingTaskId = null;
     renderTasks();
+    saveTasksToStorage();
   }
 });
 
@@ -128,6 +135,7 @@ themeBtn.addEventListener("click", function () {
   }
 
   updateThemeIcon();
+  saveTasksToStorage();
 });
 
 function updateThemeIcon() {
@@ -149,6 +157,33 @@ sortSelect.addEventListener("change", function (event) {
   } else if (sortOption === "") {
     userTasks.sort((a, b) => a.timeCreated - b.timeCreated);
   }
-
+  saveTasksToStorage();
   renderTasks();
 });
+
+function loadTasksFromStorage() {
+  const savedTasks = localStorage.getItem("todoTasks");
+  const storedIsDark = localStorage.getItem("isDarkTheme");
+
+  if (savedTasks) {
+    userTasks = JSON.parse(savedTasks);
+    renderTasks();
+  }
+
+  if (storedIsDark !== null) {
+    isDark = JSON.parse(storedIsDark);
+  }
+
+  if (isDark) {
+    document.body.className = "dark";
+  } else {
+    document.body.className = "light";
+  }
+  updateThemeIcon();
+}
+loadTasksFromStorage();
+// save task after every change
+function saveTasksToStorage() {
+  localStorage.setItem("todoTasks", JSON.stringify(userTasks));
+  localStorage.setItem("isDarkTheme", JSON.stringify(isDark));
+}
