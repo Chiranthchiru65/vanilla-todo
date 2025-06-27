@@ -32,7 +32,7 @@ function renderTasks() {
 
   userTasks.forEach((task) => {
     const taskHTML = `
-     <div id=${task.id} class="task-container">
+     <li id=${task.id} class="task-container">
        <div class="checkbox-input-child">
          <input data-task-id="${
            task.id
@@ -51,7 +51,7 @@ function renderTasks() {
          <button data-task-id="${task.id}" class="delete-btn">
                  <i data-lucide="x"></i>
          </button>
-     </div>
+     </li>
    `;
 
     container.innerHTML += taskHTML;

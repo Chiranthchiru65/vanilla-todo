@@ -13,45 +13,48 @@
     />
   </head>
   <body>
-    <section class="todo-container">
-      <div class="header">
+    <main class="todo-container">
+      <header class="header">
         <h1>Your To-Do</h1>
         <div class="header-buttons">
-          <select id="sort-options">
+          <select id="sort-options" aria-label="Sort tasks">
             <option value="">sort</option>
             <option value="alphabetical">Alpha (A - Z)</option>
             <option value="recent">Recent</option>
           </select>
-          <button class="light-dark">
+          <button class="light-dark" aria-label="Toggle dark mode">
             <i data-lucide="sun"></i>
           </button>
         </div>
-      </div>
-      <form class="input-container">
-        <input
-          class="task-title"
-          required
-          type="text"
-          minlength="4"
-          maxlength="50"
-          placeholder="Add new task"
-        />
-        <button class="add-button">
-          <i data-lucide="plus"></i>
-        </button>
-      </form>
+      </header>
+      <section>
+        <form class="input-container">
+          <!-- <label for="task-input">Add new task</label> -->
+          <input
+            class="task-title"
+            required
+            type="text"
+            minlength="4"
+            maxlength="50"
+            placeholder="Add new task"
+          />
+          <button class="add-button">
+            <i data-lucide="plus"></i>
+          </button>
+        </form>
+      </section>
       <!-- task container -->
       <!-- wrapper for all the tasks -->
-      <div class="tasks-list"></div>
-      <div class="footer">
-        <p class="todo-update-text">
+      <ul class="tasks-list" role="list"></ul>
+      <footer class="footer">
+        <p class="todo-update-text" aria-live="polite">
           your remaning todos: <span class="todo-number">0</span>
         </p>
         <p class="quote-text">
           "you miss 100% of the shorts you don't take" -Wayne gretzky
         </p>
-      </div>
-    </section>
+      </footer>
+    </main>
     <script src="./index.js"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <script>
